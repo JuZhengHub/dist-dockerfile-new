@@ -27,7 +27,7 @@ RUN rm -rf /etc/apt/sources.list.d/* && apt-get clean && rm -rf /var/lib/apt/lis
 # RUN python3 -m pip install --no-cache-dir future typing numpy lxml opencv-python scikit-learn tensorflow-gpu==1.14.0 keras h5py mxnet-cu100 torch torchvision
 
 # Install Open MPI
-RUN ldconfig && \
+RUN ln -s /usr/lib/x86_64-linux-gnu/libnuma.so.1 /usr/lib/x86_64-linux-gnu/libnuma.so && \
     mkdir /tmp/openmpi && \
     cd /tmp/openmpi && \
     wget https://www.open-mpi.org/software/ompi/v4.0/downloads/openmpi-4.0.0.tar.gz && \

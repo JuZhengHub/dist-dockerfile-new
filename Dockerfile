@@ -17,14 +17,14 @@ RUN rm -rf /etc/apt/sources.list.d/* && apt-get clean && rm -rf /var/lib/apt/lis
 # COPY ./MLNX_OFED_LINUX-5.0-1.0.0.0-ubuntu16.04-x86_64.tgz /root
 # # # RUN wget http://content.mellanox.com/ofed/MLNX_OFED-5.0-1.0.0.0/MLNX_OFED_LINUX-5.0-1.0.0.0-ubuntu16.04-x86_64.tgz && \
 # RUN cd /root && \
-# RUN wget http://content.mellanox.com/ofed/MLNX_OFED-5.0-1.0.0.0/MLNX_OFED_LINUX-5.0-1.0.0.0-ubuntu16.04-x86_64.tgz && \
-#     tar -xzvf MLNX_OFED_LINUX-5.0-1.0.0.0-ubuntu16.04-x86_64.tgz && \
-#     MLNX_OFED_LINUX-5.0-1.0.0.0-ubuntu16.04-x86_64/mlnxofedinstall --user-space-only --without-fw-update --all -q && \
-#     cd .. && \
-#     rm -rf ${MOFED_DIR} && \
-#     rm -rf *.tgz
+RUN wget http://content.mellanox.com/ofed/MLNX_OFED-5.0-1.0.0.0/MLNX_OFED_LINUX-5.0-1.0.0.0-ubuntu16.04-x86_64.tgz && \
+    tar -xzvf MLNX_OFED_LINUX-5.0-1.0.0.0-ubuntu16.04-x86_64.tgz && \
+    MLNX_OFED_LINUX-5.0-1.0.0.0-ubuntu16.04-x86_64/mlnxofedinstall --user-space-only --without-fw-update --all -q && \
+    cd .. && \
+    rm -rf ${MOFED_DIR} && \
+    rm -rf *.tgz
 
-# RUN python3 -m pip install --no-cache-dir future typing numpy lxml opencv-python scikit-learn tensorflow-gpu==1.14.0 keras h5py mxnet-cu100 torch torchvision
+RUN python3 -m pip install --no-cache-dir future typing numpy lxml opencv-python scikit-learn tensorflow-gpu==1.14.0 keras h5py mxnet-cu100 torch torchvision
 
 # Install Open MPI
 RUN ln -s /usr/lib/x86_64-linux-gnu/libnuma.so.1 /usr/lib/x86_64-linux-gnu/libnuma.so && \

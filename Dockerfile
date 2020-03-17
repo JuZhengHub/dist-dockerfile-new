@@ -24,7 +24,7 @@ RUN wget http://content.mellanox.com/ofed/MLNX_OFED-5.0-1.0.0.0/MLNX_OFED_LINUX-
     rm -rf ${MOFED_DIR} && \
     rm -rf *.tgz
 
-RUN python3 -m pip install --no-cache-dir future typing numpy lxml opencv-python scikit-learn scikit-image tensorflow-gpu==1.14.0 keras h5py mxnet-cu100 torch torchvision
+RUN python3 -m pip install --no-cache-dir future typing numpy lxml opencv-python scikit-learn tensorflow-gpu==1.14.0 keras h5py mxnet-cu100 torch torchvision
 
 # Install Open MPI
 RUN mkdir /tmp/openmpi && \

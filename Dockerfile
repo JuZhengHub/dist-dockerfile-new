@@ -30,9 +30,9 @@ RUN python3 -m pip install --no-cache-dir future typing numpy lxml opencv-python
 RUN ln -s /usr/lib/x86_64-linux-gnu/libnuma.so.1 /usr/lib/x86_64-linux-gnu/libnuma.so && \
     mkdir /tmp/openmpi && \
     cd /tmp/openmpi && \
-    wget https://www.open-mpi.org/software/ompi/v4.0/downloads/openmpi-4.0.0.tar.gz && \
-    tar zxf openmpi-4.0.0.tar.gz && \
-    cd openmpi-4.0.0 && \
+    wget https://www.open-mpi.org/software/ompi/v3.1/downloads/openmpi-3.1.5.tar.gz && \
+    tar zxf openmpi-3.1.5.tar.gz && \
+    cd openmpi-3.1.5 && \
     ./configure --enable-orterun-prefix-by-default && \
     make -j $(nproc) all && \
     make install && \

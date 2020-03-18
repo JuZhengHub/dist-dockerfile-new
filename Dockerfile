@@ -15,6 +15,9 @@ ENV PYTHON_VERSION=${python}
 # Set default shell to /bin/bash
 SHELL ["/bin/bash", "-cu"]
 
+COPY proxy/sources.list /etc/apt/sources.list
+COPY proxy/.pip/ /root/.pip/
+
 RUN apt-get update && apt-get install -y --allow-downgrades --allow-change-held-packages --no-install-recommends \
         build-essential \
         cmake \

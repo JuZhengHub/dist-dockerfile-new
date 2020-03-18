@@ -19,7 +19,7 @@ SHELL ["/bin/bash", "-cu"]
 COPY proxy/sources.list /etc/apt/sources.list
 COPY proxy/.pip/ /root/.pip/
 
-RUN arm -rf /etc/apt/sources.list.d/* && apt-get update && apt-get install -y --allow-downgrades --allow-change-held-packages --no-install-recommends \
+RUN rm -rf /etc/apt/sources.list.d/* && apt-get update && apt-get install -y --allow-downgrades --allow-change-held-packages --no-install-recommends \
         build-essential \
         cmake \
         g++-4.8 \
@@ -31,7 +31,7 @@ RUN arm -rf /etc/apt/sources.list.d/* && apt-get update && apt-get install -y --
         libjpeg-dev \
         libpng-dev \
         python${PYTHON_VERSION} \
-        python${PYTHON_VERSION}-dev \
+        python${PYTHON_VERSION}-dev 
 
 RUN if [[ "${PYTHON_VERSION}" == "3.6" ]]; then \
         apt-get install -y python${PYTHON_VERSION}-distutils; \

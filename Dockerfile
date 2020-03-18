@@ -15,7 +15,11 @@ ENV PYTHON_VERSION=${python}
 # Set default shell to /bin/bash
 SHELL ["/bin/bash", "-cu"]
 
-RUN apt-get update && apt-get install -y --allow-downgrades --allow-change-held-packages --no-install-recommends \
+# add tsinghua
+COPY proxy/sources.list /etc/apt/sources.list
+COPY proxy/.pip/ /root/.pip/
+
+RUN rm -rf /etc/apt/sources.list.d* && apt-get update && apt-get install -y --allow-downgrades --allow-change-held-packages --no-install-recommends \
         build-essential \
         cmake \
         g++-4.8 \
@@ -24,16 +28,16 @@ RUN apt-get update && apt-get install -y --allow-downgrades --allow-change-held-
         vim \
         wget \
         ca-certificates \
-        libcudnn7=${CUDNN_VERSION} \
-        libnccl2=${NCCL_VERSION} \
-        libnccl-dev=${NCCL_VERSION} \
+        # libcudnn7=${CUDNN_VERSION} \
+        # libnccl2=${NCCL_VERSION} \
+        # libnccl-dev=${NCCL_VERSION} \
         libjpeg-dev \
         libpng-dev \
         python${PYTHON_VERSION} \
-        python${PYTHON_VERSION}-dev \
-        librdmacm1 \
-        libibverbs1 \
-        ibverbs-providers
+        python${PYTHON_VERSION}-dev 
+        # librdmacm1 \
+        # libibverbs1 \
+        # ibverbs-providers
 
 RUN if [[ "${PYTHON_VERSION}" == "3.6" ]]; then \
         apt-get install -y python${PYTHON_VERSION}-distutils; \

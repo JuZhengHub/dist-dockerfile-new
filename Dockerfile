@@ -21,8 +21,8 @@ COPY proxy/.pip/ /root/.pip/
 RUN rm -rf /etc/apt/sources.list.d/* && apt-get update && apt-get install -y --allow-downgrades --allow-change-held-packages --no-install-recommends \
         build-essential \
         cmake \
-        g++-4.8 \
-        gcc-4.8 \
+        g++-4.9 \
+        gcc-4.9 \
         git \
         curl \
         vim \
@@ -33,10 +33,10 @@ RUN rm -rf /etc/apt/sources.list.d/* && apt-get update && apt-get install -y --a
         python${PYTHON_VERSION} \
         python${PYTHON_VERSION}-dev 
 
-RUN rm -rf /usr/bin/gcc  && ln -s /usr/bin/gcc-4.8 /usr/bin/gcc && \
-    rm -rf /usr/bin/g++ && ln -s /usr/bin/g++-4.8 /usr/bin/g++ && \
-    rm -rf /usr/bin/x86_64-linux-gnu-gcc && ln -s /usr/bin/gcc-4.8 /usr/bin/x86_64-linux-gnu-gcc && \
-    rm -rf /usr/bin/x86_64-linux-gnu-g++ && ln -s /usr/bin/g++-4.8 /usr/bin/x86_64-linux-gnu-g++ && \
+RUN rm -rf /usr/bin/gcc  && ln -s /usr/bin/gcc-4.9 /usr/bin/gcc && \
+    rm -rf /usr/bin/g++ && ln -s /usr/bin/g++-4.9 /usr/bin/g++ && \
+    rm -rf /usr/bin/x86_64-linux-gnu-gcc && ln -s /usr/bin/gcc-4.9 /usr/bin/x86_64-linux-gnu-gcc && \
+    rm -rf /usr/bin/x86_64-linux-gnu-g++ && ln -s /usr/bin/g++-4.9 /usr/bin/x86_64-linux-gnu-g++ && \
     gcc --version && g++ --version && x86_64-linux-gnu-gcc --version && x86_64-linux-gnu-g++ --version
 
 RUN if [[ "${PYTHON_VERSION}" == "3.6" ]]; then \

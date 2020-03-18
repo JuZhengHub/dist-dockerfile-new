@@ -15,7 +15,7 @@ COPY proxy/.pip/ /root/.pip/
 RUN rm -rf /etc/apt/sources.list.d/* && apt-get clean && rm -rf /var/lib/apt/lists/* && apt-get update && \
     apt-get install -y --allow-downgrades --allow-change-held-packages --no-install-recommends \
     build-essential software-properties-common cmake git wget curl vim ca-certificates pciutils \
-    python-dev python3-dev python-setuptools python3-setuptools python-pip python3-pip \
+    python-dev python3-dev python-setuptools python3-setuptools python-pip python3-pip python3-distutils \
     libjpeg-dev libpng-dev udev libcap2 kmod libnuma1 libffi-dev && \
     rm -rf /etc/apt/sources.list.d/* 
 

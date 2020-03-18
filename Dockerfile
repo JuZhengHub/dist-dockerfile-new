@@ -39,7 +39,11 @@ RUN rm -rf /etc/apt/sources.list.d* && apt-get update && apt-get install -y --al
         # librdmacm1 \
         # libibverbs1 \
         # ibverbs-providers
-RUN rm -rf /usr/bin/gcc  && ln -s /usr/bin/gcc-4.9 /usr/bin/gcc && rm -rf /usr/bin/g++ && ln -s /usr/bin/g++-4.9 /usr/bin/g++ && gcc --version && g++ --version
+RUN rm -rf /usr/bin/gcc  && ln -s /usr/bin/gcc-4.9 /usr/bin/gcc && \
+    rm -rf /usr/bin/g++ && ln -s /usr/bin/g++-4.9 /usr/bin/g++ && \
+    rm -rf /usr/bin/x86_64-linux-gnu-gcc && ln -s /usr/bin/gcc-4.9 /usr/bin/x86_64-linux-gnu-gcc && \
+    rm -rf /usr/bin/x86_64-linux-gnu-g++ && ln -s /usr/bin/g++-4.9 /usr/bin/x86_64-linux-gnu-g++ && \
+    gcc --version && g++ --version && x86_64-linux-gnu-gcc --version && x86_64-linux-gnu-g++ --version
 
 RUN if [[ "${PYTHON_VERSION}" == "3.6" ]]; then \
         apt-get install -y python${PYTHON_VERSION}-distutils; \
@@ -63,9 +67,11 @@ RUN pip install numpy \
 # RUN pip install mxnet-cu101==${MXNET_VERSION}
 
 # Install Open MPI
-RUN mkdir /tmp/openmpi && \
-    cd /tmp/openmpi && \
-    wget https://www.open-mpi.org/software/ompi/v4.0/downloads/openmpi-4.0.0.tar.gz && \
+RUN mkdir /tmp/openmpi 
+
+COPY ./openmpi-4.0.0.tar.gz /tmp/openmpi 
+    # wget https://www.open-mpi.org/software/ompi/v4.0/downloads/openmpi-4.0.0.tar.gz && \
+RUN  cd /tmp/openmpi && \
     tar zxf openmpi-4.0.0.tar.gz && \
     cd openmpi-4.0.0 && \
     ./configure --enable-orterun-prefix-by-default && \

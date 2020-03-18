@@ -8,7 +8,7 @@ COPY proxy/.pip/ /root/.pip/
 
 RUN rm -rf /etc/apt/sources.list.d/* && apt-get clean && rm -rf /var/lib/apt/lists/* && apt-get update -o Acquire-by-hash=yes -o Acquire::https::No-Cache=True -o Acquire::http::No-Cache=True && \
     apt-get install -y --allow-downgrades --allow-change-held-packages --no-install-recommends \
-    build-essential software-properties-common cmake git wget curl vim g++-4.8 ca-certificates cifs-utils nfs-common pciutils \
+    build-essential software-properties-common cmake git wget curl vim g++-4.9 ca-certificates cifs-utils nfs-common pciutils \
     python-dev python3-dev python-setuptools python3-setuptools python-pip python3-pip python-opencv \
     libjpeg-dev libpng-dev udev libcap2 kmod libnuma1 && \
     rm -rf /etc/apt/sources.list.d/* 

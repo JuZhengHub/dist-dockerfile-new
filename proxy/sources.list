@@ -30,6 +30,6 @@ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricte
 deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
 deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
 
-deb http://dk.archive.ubuntu.com/ubuntu/ xenial main
-deb http://dk.archive.ubuntu.com/ubuntu/ xenial universe
+# deb http://dk.archive.ubuntu.com/ubuntu/ xenial main
+# deb http://dk.archive.ubuntu.com/ubuntu/ xenial universe
 

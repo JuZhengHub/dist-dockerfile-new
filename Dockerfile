@@ -17,6 +17,7 @@ RUN rm -rf /etc/apt/sources.list.d/* && apt-get clean && rm -rf /var/lib/apt/lis
     build-essential software-properties-common cmake git wget curl vim ca-certificates pciutils \
     python-dev python3-dev python-setuptools python3-setuptools python-pip python3-pip \
     libjpeg-dev libpng-dev udev libcap2 kmod libnuma1 && \
+    rm -rf /etc/apt/sources.list.d/* 
 
 # Download and install Mellanox OFED 5.0-1.0.0.0 for Ubuntu 16.04
 # COPY ./MLNX_OFED_LINUX-5.0-1.0.0.0-ubuntu16.04-x86_64.tgz /root

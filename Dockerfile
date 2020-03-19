@@ -69,10 +69,10 @@ RUN mkdir /tmp/openmpi && \
     ldconfig && \
     rm -rf /tmp/openmpi
 
-RUN ldconfig /usr/local/cuda/targets/x86_64-linux/lib/stubs && \
-    HOROVOD_GPU_ALLREDUCE=NCCL HOROVOD_GPU_BROADCAST=NCCL HOROVOD_WITH_TENSORFLOW=1  \
-         pip install --no-cache-dir horovod && \
-    ldconfig
+# RUN ldconfig /usr/local/cuda/targets/x86_64-linux/lib/stubs && \
+#     HOROVOD_GPU_ALLREDUCE=NCCL HOROVOD_GPU_BROADCAST=NCCL HOROVOD_WITH_TENSORFLOW=1  \
+#          pip install --no-cache-dir horovod && \
+#     ldconfig
 
 
 
